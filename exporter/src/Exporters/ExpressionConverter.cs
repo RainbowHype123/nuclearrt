@@ -103,7 +103,7 @@ public class ExpressionConverter
 		{ (ObjectType.System, -1), _ => "(" },
 		{ (ObjectType.System, 1),  _ => "Application::Instance().Random(" }, // Random(
 		{ (ObjectType.System, 2),  _ => $"Application::Instance().GetAppData()->GetGlobalValue(" }, // Global Value
-		{ (ObjectType.System, 3),  e => $"CValue(\"{e.Loader.ToString()}\")" },
+		{ (ObjectType.System, 3),  e => $"CValue(\"{StringUtils.SanitizeString(e.Loader.ToString())}\")" },
 		{ (ObjectType.System, 4),  _ => $"CValue(" }, // Str$
 		{ (ObjectType.System, 5),  _ => $"MathHelper::ToValue(" }, // Val(
 		{ (ObjectType.System, 6),  _ => "CValue(Application::Instance().GetBackend()->platform->GetAppDrive())" }, // Appdrive$
