@@ -33,7 +33,13 @@ public class TimerComparisonEqualToCondition : ConditionBase
 
 	public override string Build(EventBase eventBase, ref string nextLabel, ref int orIndex, Dictionary<string, object>? parameters = null, string ifStatement = "if (")
 	{
-		return $"{ifStatement} (GameTimer.CheckEvent({parameters["eventIndex"]}, {((Time)eventBase.Items[0].Loader).Timer}, TimerEventType::Equals))) goto {nextLabel};";
+		string timer;
+		if (eventBase.Items[0].Loader is Time time)
+			timer = time.Timer.ToString();
+		else
+			timer = ConvertExpression(eventBase, 0);
+
+		return $"{ifStatement} (GameTimer.CheckEvent({parameters["eventIndex"]}, {timer}, TimerEventType::Equals))) goto {nextLabel};";
 	}
 }
 
