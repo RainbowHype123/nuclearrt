@@ -21,6 +21,8 @@ public static class ExtensionExporterRegistry
 		new XBOXGamepadExporter(),
 		new CrasherExporter(),
 		new ArrayExporter(),
+		new AdvCommentExporter(),
+		new commentorExporter(),
 	];
 
 	public static ExtensionExporter GetExporter(string extensionName)
